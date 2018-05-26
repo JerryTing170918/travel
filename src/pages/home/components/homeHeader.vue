@@ -9,11 +9,11 @@
 </template>
 <script>
 export default {
-   name:'homeHeader' 
+  name:'homeHeader'
 }
 </script>
 <style lang="stylus" scoped>
-    @import '~@/assets/styles/varibles.styl'
+    @import '~@/assets/styles/varibles.styl'//引入样式需要用@
     .header
         display :flex
         line-height:.86rem
@@ -21,7 +21,7 @@ export default {
         color:#fff
         .left
             width:.64rem
-            float: left 
+            float: left
             .backIcon
                 text-align:center
                 font-size:.5rem
@@ -34,9 +34,7 @@ export default {
             padding-left:.2rem
             background #fff
             border-radius:.1rem
-            color:#ccc
-            
-
+            color:#ccc            
         .right
             width:1.24rem
             float: right
