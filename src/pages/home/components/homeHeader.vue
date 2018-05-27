@@ -9,37 +9,49 @@
 </template>
 <script>
 export default {
-  name:'homeHeader'
+  name: "homeHeader"
 }
 </script>
 <style lang="stylus" scoped>
-    @import '~@/assets/styles/varibles.styl'//引入样式需要用@
-    .header
-        display :flex
-        line-height:.86rem
-        background: $bgColor
-        color:#fff
-        .left
-            width:.64rem
-            float: left
-            .backIcon
-                text-align:center
-                font-size:.5rem
-        .input
-            flex:1
-            height:.64rem
-            margin-top :.11rem
-            line-height:.64rem
-            margin-left:.2rem
-            padding-left:.2rem
-            background #fff
-            border-radius:.1rem
-            color:#ccc            
-        .right
-            width:1.24rem
-            float: right
-            text-align :center
-            .arrowUp
-                margin-left:-0.02em
-                font-size:16px
+@import '~@/assets/styles/varibles.styl' // 引入样式需要用@
+
+.header {
+    display: flex;
+    line-height: 0.86rem;
+    background: $bgColor;
+    color: #fff;
+
+    .left {
+        width: 0.64rem;
+        float: left;
+
+        .backIcon {
+            text-align: center;
+            font-size: 0.5rem;
+        }
+    }
+
+    .input {
+        flex: 1;
+        height: 0.64rem;
+        margin-top: 0.11rem;
+        line-height: 0.64rem;
+        margin-left: 0.2rem;
+        padding-left: 0.2rem;
+        background: #fff;
+        border-radius: 0.1rem;
+        color: #ccc;
+    }
+
+    .right {
+        width: 1.24rem;
+        float: right;
+        text-align: center;
+
+        .arrowUp {
+            margin-left: -0.02em;
+            font-size: 16px;
+        }
+    }
+}
 </style>
