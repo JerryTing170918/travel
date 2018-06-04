@@ -3,10 +3,12 @@
         <div class="header">
             <div class="left"><div class="iconfont backIcon">&#xe697;</div></div>
             <div class="input"><span class="iconfont">&#xe86e;</span>输入城市/景点/游玩主题</div>
-            <div class="right">
-                {{this.city}}
-                <span class="iconfont arrowUp">&#xe87e;</span>
-            </div>
+            <router-link to='/city'>
+                <div class="right">
+                    {{this.city}}
+                    <span class="iconfont arrowUp">&#xe87e;</span>
+                </div>
+            </router-link>
         </div>
     </div>
 </template>
@@ -23,7 +25,7 @@ export default {
 
 .header {
     display: flex;
-    line-height: 0.86rem;
+    line-height: $headerHeight
     background: $bgColor;
     color: #fff;
 
@@ -53,6 +55,7 @@ export default {
         width: 1.24rem;
         float: right;
         text-align: center;
+        color:#fff
 
         .arrowUp {
             margin-left: -0.02em;
