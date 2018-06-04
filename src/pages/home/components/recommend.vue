@@ -2,7 +2,11 @@
     <div>
         <div class="title">热销推荐</div>
         <ul>
-            <li class="item border-bottom" v-for="item of recommendList">
+            <li 
+                class="item border-bottom" 
+                v-for="item of list"
+                :key="item.id"
+            >
                 <div class="item-img">
                     <img class="item-img" v-bind:src="item.imgUrl">
                 </div>
@@ -19,27 +23,10 @@
 <script>
 export default {
   name: "homeRecommend",
-  data() {
-    return {
-        recommendList:[{
-            id:"001",
-            imgUrl:"http://img1.qunarzz.com/sight/p0/201405/27/8211cadd5d9fefeaa044c5b7eefc695d.jpg_150x150_184fbe07.jpg",
-            title:"千岛湖",
-            desc:"超大的魅力淡水湖"
-       },{
-            id:"002",
-            imgUrl:"http://img1.qunarzz.com/sight/p0/201405/27/8211cadd5d9fefeaa044c5b7eefc695d.jpg_150x150_184fbe07.jpg",
-            title:"千岛湖",
-            desc:"超大的魅力淡水湖"
-       },{
-            id:"003",
-            imgUrl:"http://img1.qunarzz.com/sight/p0/201405/27/8211cadd5d9fefeaa044c5b7eefc695d.jpg_150x150_184fbe07.jpg",
-            title:"千岛湖",
-            desc:"超大的魅力淡水湖"
-       },] 
-    };
+  props: {
+    list: Array
   }
-};
+}
 </script>
 <style lang="stylus" scoped>
 @import '~@/assets/styles/mixins.styl'; // 多字省略显示
