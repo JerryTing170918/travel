@@ -85,7 +85,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '~@/assets/styles/varibles.styl';
-@import '~@/assets/styles/mixins.styl';
+@import '~@/assets/styles/mixins.styl';//多字省略显示
 
 .icons >>> .swiper-container { // 下半区域图标也可滑动
     height: 0;
