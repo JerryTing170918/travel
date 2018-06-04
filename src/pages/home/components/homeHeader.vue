@@ -3,13 +3,19 @@
         <div class="header">
             <div class="left"><div class="iconfont backIcon">&#xe697;</div></div>
             <div class="input"><span class="iconfont">&#xe86e;</span>输入城市/景点/游玩主题</div>
-            <div class="right">城市<span class="iconfont arrowUp">&#xe87e;</span></div>
+            <div class="right">
+                {{this.city}}
+                <span class="iconfont arrowUp">&#xe87e;</span>
+            </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-  name: "homeHeader"
+  name: "homeHeader",
+  props:{
+      city: String
+  }
 }
 </script>
 <style lang="stylus" scoped>

@@ -1,6 +1,6 @@
 <template>
     <div class="icons">
-        <swiper :options="iconSwiperOption">
+        <swiper :options="swiperOption">
             <swiper-slide v-for='(page, index) of pages' :key='index'>
                 
                 <!--循环的不是iconList而是page-->
@@ -19,59 +19,23 @@
     </div>   
 </template>
 <script>
-export default {
+export default { 
     name: "homeIcons",
-    data(){
-        return{
-            iconList:[{
-                id:'001',
-                imgUrl:"http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-                desc:'景点门票'
-            },{
-                id:'002',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/ed/cf572be30fc32f02.png',
-                desc:'2'
-            },{
-                id:'003',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/17/99402a22ce4af302.png',
-                desc:'3'
-            },{
-                id:'004',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/b8/c5dcdb58deec2402.png',
-                desc:'4'
-            },{
-                id:'005',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/17/99402a22ce4af302.png',
-                desc:'5'
-            },{
-                id:'006',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                desc:'6'
-            },{
-                id:'007',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                desc:'7'
-            },{
-                id:'008',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                desc:'8'
-            },{
-                id:'009',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                desc:'一日游下半区域图标也可滑'
-            }],
-            iconSwiperOption: {
+    props:{
+        list:Array,
+    },
+    data() {
+        return {
+            swiperOption: {
                 //轮播图设置
-                pagination: "",
-                loop: true, //首尾循环播放
                 autoplay: 0 //切换时间
-            }, 
+            }
         }
     },
     computed:{
         pages(){
             const pages = []
-            this.iconList.forEach((item,index) => {
+            this.list.forEach((item,index) => {
                 const page = Math.floor(index / 8)
                 if(!pages[page]){
                     pages[page] = []
