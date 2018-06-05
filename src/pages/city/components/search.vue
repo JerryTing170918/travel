@@ -7,9 +7,6 @@
 
 export default {
     name:'citySearch',
-    // components:{
-    //     cityHeader
-    // }
 }
 </script>
 <style lang="stylus" scoped>
