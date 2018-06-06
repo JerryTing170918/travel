@@ -14,6 +14,7 @@ import homeIcons from './components/icons'
 import homeRecommend from './components/recommend'
 import homeWeekend from './components/weekend'
 import axios from 'axios'
+import {mapState} from 'vuex'
 
 export default {
   name: 'home',
@@ -32,10 +33,14 @@ export default {
       weekendList:[],
     }
   },
+  // 代码优化
+  computed:{
+    ...mapState(['city'])
+  },
   methods:{
     getHomeInfo(){
-      axios.get('/api/index.json')
-      .then(this.getHomeInfoSucc)
+      axios.get('/api/index.json?city=' + this.city)
+        .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc(res){
       res = res.data
@@ -48,8 +53,17 @@ export default {
       }
     }
   },  
+  // mounted首次加载才会触发此钩子
   mounted(){
+    this.lastCity = this.city
     this.getHomeInfo()
+  },
+  // activated首次加载和页面重新被显示时都会触发此钩子
+  activated(){
+    if(this.lastCity !== this.city){
+      this.lastCity = this.city
+      this.getHomeInfo()
+    }
   }
 }
 </script>
