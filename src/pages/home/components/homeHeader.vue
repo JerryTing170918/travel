@@ -13,19 +13,21 @@
     </div>
 </template>
 <script>
+//代码优化vuex
+import { mapState } from 'vuex'
 export default {
   name: "homeHeader",
-  props:{
-      city: String
+  computed:{
+    ...mapState(['city'])
   }
 }
 </script>
 <style lang="stylus" scoped>
-@import '~@/assets/styles/varibles.styl' // 引入样式需要用@
+@import '~@/assets/styles/varibles.styl'; // 引入样式需要用@
 
 .header {
     display: flex;
-    line-height: $headerHeight
+    line-height: $headerHeight;
     background: $bgColor;
     color: #fff;
 
@@ -52,14 +54,16 @@ export default {
     }
 
     .right {
-        width: 1.24rem;
+        min-width: 1.2rem;
+        // 左padding
+        margin-left: 0.2rem;
         float: right;
         text-align: center;
-        color:#fff
+        color: #fff;
 
         .arrowUp {
-            margin-left: -0.02em;
-            font-size: 16px;
+            margin-left: -0.02rem;
+            font-size: 14px;
         }
     }
 }

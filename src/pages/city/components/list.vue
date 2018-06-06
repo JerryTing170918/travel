@@ -5,7 +5,7 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">北京</div>  
+                        <div class="button">{{this.currentCity}}</div>  
                     </div>
                 </div>
             </div>
@@ -15,6 +15,7 @@
                     <div class="button-wrapper" 
                         v-for="item of hot" 
                         :key="item.id"
+                        @click="handleCityClick(item.name)"
                     >
                         <div class="button">{{item.name}}</div>  
                     </div>
@@ -31,6 +32,7 @@
                     <div class="item border-bottom" 
                         v-for="innerItem of item"
                         :key="innerItem.id"
+                        @click="handleCityClick(innerItem.name)"
                     >
                         {{innerItem.name}}
                     </div>
@@ -40,17 +42,39 @@
     </div>
 </template>
 <script>
+//代码优化vuex
+import { mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 import Bscroll from "better-scroll";
 export default {
   name: "cityList",
+//   传递参数
   props: {
     hot: Array,
     cities: Object,
     letter: String
   },
+//   代码优化vuex
+  computed:{
+    ...mapState({
+        // 将公用数据city映射到list组件的计算属性里，映射后的名字叫做currentCity
+        currentCity:'city'
+    })
+  },
+// 函数方法
+  methods:{
+    handleCityClick (city){
+        // this.changeCity(city)优化后
+        this.$store.commit('changeCity',city)
+        this.$router.push('/')//跳转到首页
+    },
+    ...mapMutations(['changeCity'])
+  },
+// 钩子
   mounted() {
     this.scroll = new Bscroll(this.$refs.wrapper);
   },
+//   监听
   watch:{
       letter(){
             if(this.letter){

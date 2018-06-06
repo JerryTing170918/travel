@@ -13,6 +13,7 @@
                     class="search-item border-bottom" 
                     v-for='item of list' 
                     :key="item.id"
+                    @click="handleCityClick(item.name)"
                 >
                     {{item.name}}
                 </li>
@@ -27,9 +28,11 @@
 import Bscroll from 'better-scroll'
 export default {
   name: "citySearch",
+//   传参
   props: {
     cities: Object
   },
+//   数据
   data() {
     return {
       keyword: "",
@@ -37,11 +40,13 @@ export default {
       timer: null
     };
   },
+//   计算属性
   computed:{
       hasNoData(){
           return !this.list.length
       }
   },
+//   监听属性
   watch: {
     keyword() {
       if (this.timer) {
@@ -67,8 +72,16 @@ export default {
       }, 100)
     }
   },
+//   函数方法
+  methods:{
+    handleCityClick (city){
+        this.$store.commit('changeCity',city)
+        this.$router.push('/')//跳转到首页
+    }
+  },
+//   钩子
   mounted(){
-      this.scroll = new Bscroll(this.$refs.search)
+    this.scroll = new Bscroll(this.$refs.search)
   }
 };
 </script>
