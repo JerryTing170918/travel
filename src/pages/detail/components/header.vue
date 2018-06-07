@@ -71,7 +71,9 @@ export default {
 
     .header-abs-back
         font-size: .4rem
-//      color: #fff无效果
+
+        
+        //  color: #fff无效果
 
   .header-fixed
     z-index: 2
