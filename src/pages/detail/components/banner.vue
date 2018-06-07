@@ -10,16 +10,20 @@
             </div>
         </div>
     </div>
-    <common-gallary 
-        :imgs='bannerImgs' 
-        v-show='showGallary'
-        @close='handleGallaryClose'
-    ></common-gallary>
+    <fade-animation>
+        <common-gallary 
+            :imgs='bannerImgs' 
+            v-show='showGallary'
+            @close='handleGallaryClose'
+        ></common-gallary>
+    </fade-animation>   
 </div>
     
 </template>
 <script>
 import commonGallary from 'common/gallary/gallary'
+import fadeAnimation from 'common/fade/fadeAnimation'
+
 export default {
     name:'detailBanner',
     props:{
@@ -40,8 +44,10 @@ export default {
             this.showGallary = false
         }
     },
+// 注册局部组件
     components:{
-        commonGallary
+        commonGallary,
+        fadeAnimation
     },
 }
 </script>
